@@ -19,15 +19,15 @@ export default function TextForm(props) {
   function handleonClickClear() {
     setText("");
   }
-  function countWords(){
-      var wordArr = text.split(" ");
-      var length = wordArr.length;
-      for(let eachWord of wordArr){
-          if(eachWord == ""){
-              return length-1;
-          }
+  function countWords() {
+    var wordArr = text.split(" ");
+    var length = wordArr.length;
+    for (let eachWord of wordArr) {
+      if (eachWord == "") {
+        return length - 1;
       }
-      return length;
+    }
+    return length;
   }
   const [text, setText] = useState("");
   const [mode, setMode] = useState("white");
@@ -46,7 +46,7 @@ export default function TextForm(props) {
                 {props.heading}
               </h1>
               <textarea
-                className="form-control mb-2"
+                className="form-control mb-2 my-3"
                 id="exampleFormControlTextarea1"
                 rows="8"
                 value={text}
@@ -54,16 +54,16 @@ export default function TextForm(props) {
                 style={props.textareaColor}
               ></textarea>
               <button
-                className="btn btn-primary mx-2"
+                className="btn btn-primary mx-2 my-3"
                 onClick={handleonClickUpper}
               >
                 Convert to Uppercase
               </button>
-              <button className="btn btn-primary" onClick={handleonClickLower}>
+              <button className="btn btn-primary my-3 mx-2" onClick={handleonClickLower}>
                 Convert to Lowercase
               </button>
               <button
-                className="btn btn-primary mx-2"
+                className="btn btn-primary mx-2 my-3"
                 onClick={handleonClickClear}
               >
                 Clear Text
@@ -78,10 +78,22 @@ export default function TextForm(props) {
           <div className="col-12">
             <h3>Your Text summary</h3>
             <p>
-              <b>{countWords()}</b> words and <b>{text.length}</b>{" "}
-              characters
+              <b>
+                {
+                  text.split(" ").filter(function (ele) {
+                    return ele.length !== 0;
+                  }).length
+                }
+              </b>{" "}
+              words and <b>{text.length}</b> characters
             </p>
-            <p>{0.008 * countWords()} minutes to read the text</p>
+            <p>
+              {0.008 *
+                text.split(" ").filter(function (ele) {
+                  return ele.length !== 0;
+                }).length}{" "}
+              minutes to read the text
+            </p>
             <h2>Preview</h2>
             <p>
               {text.length > 0 ? text : "Write something to preview it here"}

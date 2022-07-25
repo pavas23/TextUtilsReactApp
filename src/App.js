@@ -40,7 +40,7 @@ function App() {
   return (
     <>
     {/* Routers in React JS */}
-      {/* <BrowserRouter> */}
+      <BrowserRouter>
         <Navbar
           title="TextUtilities"
           mode={toggle}
@@ -48,18 +48,18 @@ function App() {
           textColor={textColor}
           toggleText={toggleText}
         />
-        {/* <Routes>
-          <Route path="/" element={ */}
+        <Routes>
+          <Route path="/" element={
               <TextForm
                 heading="Enter text here"
                 textColor={textColor}
                 mode={toggle}
                 textareaColor={obj}/>
-            {/* }> */}
-          {/* </Route>
+            }>
+          </Route>
           <Route path="/about" element={<About />}></Route>
         </Routes>
-      </BrowserRouter> */}
+      </BrowserRouter>
     </>
   );
 }
